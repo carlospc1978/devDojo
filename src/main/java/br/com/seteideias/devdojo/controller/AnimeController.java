@@ -5,10 +5,8 @@ import br.com.seteideias.devdojo.service.AnimeService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -18,13 +16,19 @@ public class AnimeController {
 
     @PostMapping("/novo")
     public Anime novo(Anime anime) {
-        return animeService.save(anime);
+        Anime anime1 = new Anime(1L,"Jaspion");
+        return animeService.save(anime1);
+    }
+
+    @PostMapping("/cad")
+    public String cadastrarAnime () {
+        Anime anime1 = new Anime(1L,"Jaspion");
+        return anime1.getName();
     }
 
     @GetMapping
     public List<Anime> listAll() {
         return animeService.listarTodos();
     }
-
 
 }
